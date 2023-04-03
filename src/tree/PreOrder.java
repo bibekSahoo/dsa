@@ -52,16 +52,21 @@ public class PreOrder {
         preorderTraversalImpl(root);
         return finalAns;
     }
-}
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int kthsmallest(final int[] A, int B) {
+        int minNum = 0;
 
-    TreeNode(int x) {
-        val = x;
-        left = null;
-        right = null;
+        for(int i = 0 ; i < B; i++){
+            minNum = A[i];
+            int minIndx = i;
+            for(int j =i+1; j < A.length; j++){
+                if(A[j] < minNum){
+                    minNum = A[j];
+                    minIndx = j;
+                }
+            }
+        }
+        return 0;
     }
 }
+
