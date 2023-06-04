@@ -77,9 +77,9 @@ public class Recursive1ToN {
 //        System.out.println(10/10);
 //        System.out.println(10%10);
 //        System.out.println(1/10);
-        System.out.println(-1%10);
+//        System.out.println(-1%10);
 //        new Recursive1ToN().solve(83557);
-//        new Recursive1ToN().wordSolve("aab", "");
+        new Recursive1ToN().wordSolve("aab", "");
 
     }
 

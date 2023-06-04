@@ -7,7 +7,6 @@ class TreeNode {
 
     TreeNode(int data) {
         val = data;
-        left = null;
-        right = null;
+        left = right = null;
     }
 }
