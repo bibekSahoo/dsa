@@ -28,6 +28,15 @@ public class PredicateDemo {
         List<Integer> primes = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29);
         IntSummaryStatistics stats = primes.stream() .mapToInt((x) -> x) .summaryStatistics();
         System.out.println(stats);
+
+
+        List<String> strings = Arrays.asList("Java", "Python", "C++", "JavaScript", "Ruby");
+
+        int maxLength = strings.stream()
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
+
     }
 }
 

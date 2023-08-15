@@ -6,7 +6,6 @@ public class Combi {
     public static void main(String[] args) {
 //        print(0, 3, new int[3]);
         char[] chars = "bibekK".toCharArray();
-
 //        HashMap<Character, Integer> keepCount = new HashMap<>();
 //        for (int i = 0; i < chars.length; i++) {
 //            keepCount.put(chars[i], keepCount.getOrDefault(chars[i], 0) + 1);

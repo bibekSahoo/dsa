@@ -1,32 +1,58 @@
 package Rough;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Stack;
+
+class checker {
+    public static void main(String[] args) {
+        ListNode node = new ListNode(100);
+        node.next = new ListNode(200);
+        node.next.next = new ListNode(300);
+        node.next.next.next = new ListNode(400);
+        node.next.next.next.next = new ListNode(500);
+        node.next.next.next.next.next = new ListNode(600);
+        ListNode head = node;
+        ListNode neHead = new Solution().solve(head);
+        while (neHead != null) {
+            System.out.println(neHead.val);
+            neHead = neHead.next;
+        }
+    }
+}
 
 public class Solution {
-    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
-    public int kthsmallest(final List<Integer> A, int B) {
-        int minNum = 0;
-        for(int i = 0 ; i < A.size(); i++){
-            minNum = A.get(i);
-            int minIndx = i;
-            for(int j =i+1; j < A.size(); j++){
-                if(A.get(j) < minNum){
-                    minIndx = j;
-                    int temp = A.get(j);
-                    A.set(i, A.get(j));//set i
-                    A.set(j, minNum);//set j
-                    minNum = temp;
+    Stack<ListNode> evenElements = new Stack<>();
+
+    public ListNode solve(ListNode A) {
+        ListNode headPosition = A;
+        ListNode headPositionFinal = A;
+        int count = 1;
+        // create stack of even number
+        while (headPosition != null) {
+            if (count % 2 == 0) {
+                ListNode toBePushed = new ListNode(headPosition.val);
+                evenElements.push(toBePushed);
+            }
+            count++;
+            headPosition = headPosition.next;
+        }
+
+        // check if even number is more than 1 then only reverse else send the original head
+        if (evenElements.size() == 1) {
+            return A;
+        } else {
+            // rearrange here
+            count = 1;
+            while (headPositionFinal != null) {
+                if (count % 2 != 0 && !evenElements.isEmpty()) {
+                    ListNode poppedNode = evenElements.pop();
+                    ListNode nextOfRemovedNode = headPositionFinal.next.next;
+                    headPositionFinal.next = poppedNode;
+                    headPositionFinal.next.next = nextOfRemovedNode;
                 }
+                count++;
+                headPositionFinal = headPositionFinal.next;
             }
         }
-        System.out.println(Arrays.toString(A.toArray()));
-        return A.get(B-1);
-    }
-
-
-    public static void main(String[] args) {
-        List<Integer> A = Arrays.asList(8, 16, 80, 55, 32, 8, 38, 40, 65, 18, 15, 45, 50, 38, 54, 52, 23, 74, 81, 42, 28, 16, 66, 35, 91, 36, 44, 9, 85, 58, 59, 49, 75, 20, 87, 60, 17, 11, 39, 62, 20, 17, 46, 26, 81, 92);
-        System.out.println(new Solution().kthsmallest(A, 9));
+        return A;
     }
 }
