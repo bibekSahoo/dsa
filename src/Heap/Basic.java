@@ -7,6 +7,5 @@ public class Basic {
         PriorityQueue priorityQueue = new PriorityQueue<>();
         priorityQueue.add("s");
         System.out.println(priorityQueue.peek());
-
     }
 }
