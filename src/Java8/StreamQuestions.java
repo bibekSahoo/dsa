@@ -1,6 +1,7 @@
 package Java8;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamQuestions {
     public static void main(String[] args) {
@@ -74,7 +75,7 @@ public class StreamQuestions {
 //        Given a list of strings, write a Java program to convert each string to uppercase.
                 List<String> uppercaseStrings = strings.stream()
                 .map(String::toUpperCase)
-                .toList();
+                .collect(Collectors.toList());
 
 //        Given a list of strings, write a Java program to find the number of strings that have the letter 'a' at the second position.
         long count2 = strings.stream()
